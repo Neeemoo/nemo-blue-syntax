@@ -1,0 +1,252 @@
+@import "syntax-variables";
+
+atom-text-editor {
+  background-color: #161719;
+  color: #ffffff;
+
+  //Komische Linie (unsichtbar weil unnötig)
+  .wrap-guide {
+    background-color: #00000000;
+  }
+
+  //Gleich unten dran die senkrechte Linie zwischen . und }
+  .indent-guide {
+    color: #252c39;
+  }
+  //Unsichtbare Zeichen (Abstände vom linken Rand bis zum Code)
+  .invisible-character {
+    color: #252c39;
+  }
+
+  .gutter {
+    //Normaler Hintergrund der Zahlen links
+    background-color: #151921;
+
+    //Selektiertes Gutter
+    .line-number {
+      &.cursor-line {
+        background-color: #313949;
+        color: #ffffff;
+      }
+      //Aktuelles Gutter (falls leer übernimmt von oben)
+      &.cursor-line-no-selection {}
+    }
+  }
+
+  //kleines Dreieck wenn zusammengeklappt
+  .gutter .line-number.folded,
+  .gutter .line-number:after,
+  .fold-marker:after {
+    color: #969896;
+  }
+  //der blinkende Cursor
+  .cursor {
+    border-left: 1px solid #ffffff;
+  }
+
+  //Hintergrund selektiert
+  .selection .region {
+    background-color: #252c39;
+  }
+
+  .syntax--meta {
+    //!DOCTYPE
+    &.syntax--doctype {
+      color: #a7bed6;
+    }
+    //JS if Statement die geschwungenen Klammern { }
+    &.syntax--brace {
+      color: #ffffff;
+    }
+    //"." zwischen document.getElementById
+    &.syntax--delimiter {
+      color: #ffffff;
+    }
+  }
+
+  .syntax--punctuation {
+    //Doppelpunkt zwischen CSS Regeln und Wert
+    &.syntax--section {
+      color: #ffffff;
+      //Die geschwungenen Klammern { }
+      &.syntax--bracket {
+        color: #ffffff;
+      }
+      //<?php ?> Tag
+      &.syntax--embedded {
+        color: #099b9e;
+      }
+    }
+    //Das "=" und Semikolon im CSS
+    &.syntax--separator,
+    &.syntax--terminator {
+      color: #ffffff;
+    }
+
+    &.syntax--definition {
+      //"@" im CSS (bsp @import)
+      &.syntax--keyword {
+        color: #3f9fff;
+      }
+      //Die Anführungszeichen
+      &.syntax--string {
+        color: #ffffff;
+      }
+      //HTML Tags < > und </ >
+      &.syntax--tag {
+        color: #a7bed6;
+      }
+      // . # und :(bsp vor :hover) im CSS
+      &.syntax--entity {
+        color: #3ffff5;
+      }
+      //Runde & geschwungene Klammern in JS ( ) { }
+      &.syntax--bracket {
+        color: #ffffff;
+      }
+      //Die Anfänge & Schlüsse der Kommentare
+      &.syntax--comment {
+        color: #4f4f4f;
+      }
+    }
+  }
+  //Der Kommentartext
+  .syntax--comment {
+    color: #4f4f4f;
+  }
+
+  //CSS: variablen, auto-fill
+  .syntax--variable {
+    color: #7495af;
+    &.syntax--other {
+      //JS: classList
+      &.syntax--property {
+        color: #257ec4;
+      }
+    }
+  }
+
+  //Falls irgendwo ein Link benutzt wird
+  .syntax--markup {
+    text-decoration: underline;
+  }
+
+  .syntax--keyword {
+    // "=" in JS und PHP
+    &.syntax--operator {
+      color: #ffffff;
+    }
+    //im CSS "import", "media"
+    &.syntax--control {
+      color: #1c67b2;
+      //PHP: break, continue und return
+      &.syntax--break,
+      &.syntax--continue,
+      &.syntax--return {
+        color: #31ce78;
+      }
+    }
+    &.syntax--other {
+      //Einheit im CSS - px % vh s
+      &.syntax--unit {
+        color: #00e1ff;
+      }
+    }
+  }
+
+  //JS: "var, function"
+  .syntax--storage {
+    color: #57c6a1;
+  }
+
+  //CSS Eigenschaften background, display, margin, padding
+  .syntax--constant {
+    color: #6d85ff;
+    //Alle Zahlen
+    &.syntax--numeric {
+      color: #0090ff;
+    }
+    //Sonderzeichen mit Backslash \"
+    &.syntax--character {
+      &.syntax--escape,
+      &.syntax--character-class {
+        color: #3d60ff;
+      }
+    }
+  }
+
+  .syntax--support {
+    //CSS Regeln
+    &.syntax--property-name {
+      color: #886fba;
+      //max-width bei "@media screen and (max-width: ---px)"
+      &.syntax--media {
+        color: #d470ea;
+      }
+    }
+    //repeat, minmax,
+    &.syntax--function {
+      color: #d470ea;
+      //PHP: echo
+      &.syntax--construct {
+        color: #80e5bf;
+      }
+      //C: printf
+      &.syntax--C99 {
+        color: #39a3c6; //
+      }
+    }
+    //JS: "window" "document" "style.color"
+    &.syntax--variable {
+      color: #39a3c6;
+    }
+  }
+
+  .syntax--entity {
+    &.syntax--other {
+      //href, src, rel, onclick
+      &.syntax--attribute-name {
+        color: #39a3c6;
+        //class = ""
+        &.syntax--class {
+          color: #4375c6;
+        }
+        //id = ""
+        &.syntax--id {
+          color: #6457c6;
+        }
+      }
+    }
+    &.syntax--name {
+      //Die HTML Tags
+      &.syntax--tag {
+        color: #57c6a1;
+        font-weight: bold;
+      }
+      //Name der JS Funktion
+      &.syntax--function {
+        color: #35c469;
+      }
+      //CPP: std bei using namespace std
+      &.syntax--type {
+        color: #35c469;
+      }
+    }
+  }
+  //Alles in Anführungszeichen
+  .syntax--string {
+    color: #c6c6c6;
+  }
+}
+
+//Matching Brackets sollen unterstrichen werden
+atom-text-editor.editor {
+  .bracket-matcher .region {
+    border-bottom: 1px solid #d168ff;
+  }
+}
+
+// Mini editor
+atom-text-editor[mini] .scroll-view {
+  padding-left: 1px;
+}
